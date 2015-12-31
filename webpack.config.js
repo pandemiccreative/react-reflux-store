@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   cache: true,
@@ -10,6 +11,12 @@ module.exports = {
   output: {
     filename: 'public/js/bundle.js'
   },
+  plugins: [
+      new webpack.ProvidePlugin({
+          $: "jquery",
+          jQuery: "jquery"
+      })
+  ],
   module: {
     loaders: [
       {
@@ -23,7 +30,11 @@ module.exports = {
       {
         test: /\.less$/,
         loader: 'style!css!less'
-      }
+      },
+      { test: /\.(woff|woff2)$/,  loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+      { test: /\.ttf$/,    loader: "file-loader" },
+      { test: /\.eot$/,    loader: "file-loader" },
+      { test: /\.svg$/,    loader: "file-loader" }
     ]
   }
 }

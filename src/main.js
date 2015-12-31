@@ -1,4 +1,3 @@
-import HelloWorld from './components/HelloWorld.jsx';
 import './less/core.less';
-
-document.write(HelloWorld);
+import jQuery from 'jquery/dist/jquery';
+import 'bootstrap-webpack';
